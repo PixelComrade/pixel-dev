@@ -1,4 +1,6 @@
-pixel-dev
+Pixel Comrade
 =========
 
-Personal game development, graphics and tech experiments repo.
+This is my repo for game development, tech demos and experiments.
+
+Nothing particularly fancy here right now.
