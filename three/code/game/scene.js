@@ -27,7 +27,7 @@ Scene.prototype.addToScene = function(item)
    this.scene.add(item);
 };
 
-Scene.prototype.adjustCamera = function(change)
+Scene.prototype.moveCamera = function(change)
 {
    // Change variable MUST be a ThreeJS Vector3 or a float
    // If it's a float, assume that the camera should be moved along the z axis

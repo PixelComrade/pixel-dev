@@ -18,9 +18,17 @@ window.requestAnimFrame = (function()
       };
 })();
 
+var counter = 0;
+var limit = 30;
+
 (function GameLoop()
 {
-   requestAnimFrame(GameLoop);
+   if(counter < limit)
+   {
+      requestAnimFrame(GameLoop);
+      counter++;
+   }
    game.update(); // TODO - update at a locked framerate
    game.render();
+   console.log("Looping");
 })();

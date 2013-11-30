@@ -1,9 +1,11 @@
 // This class handles all the major game calls and events
 
-/*
- * This game could possibly a tunnel runner in the sky
- * Using lots and lots of shaders, with colors changing as the game plays.
- * Lots of tweening and physics too via 3rd party plugins
+ /*
+ * Useful color codes
+ * 0xFFFFFF - White
+ * 0x0000FF - Blue
+ * 0xFF0000 - Red
+ * 0x00FF00 - Green
  */
 
  // Define some constants
@@ -29,24 +31,42 @@ function Game($gameView)
 
    // The light first
    // A spotlight because we want shadows later on
-   this.spotlight = new THREE.SpotLight(0xff0000);
-   this.spotlight.position.set(50, 50, 0);
+   this.spotlight = new THREE.SpotLight(0x86D8E3); // A teal light
+   this.spotlight.position.set(50, 50, 50);
    // The spotlight will focus on (0, 0, 0) by default
    this.scene.addToScene(this.spotlight);
 
    // Now the ground
+/*
    this.ground = new GameObject(
-      new THREE.Vector3(0, -5 , 0), new String("0xCC0000"), 
-      CUBE, new THREE.Vector3(200, 10, 200), false, false);
+      new THREE.Vector3(0, -5 , 0), new String("0xFFFFFF"), 
+      CUBE, new THREE.Vector3(800, 10, 800), false, false);
    this.scene.addToScene(this.ground.gShape);
+*/
+   // Need an origin point
+   this.origin = new THREE.Object3D();
+   this.scene.addToScene(this.origin);  
 
-   // Now the blubber thing
-   this.blubber = new GameObject(
-      new THREE.Vector3(0, 50, 0), new String("0xCC0000"), SPHERE, 10, true, false);
-   this.scene.addToScene(this.blubber.gShape);  
+   // Now the main spheres
+   this.sphere1 = new THREE.Object3D();
+   this.sphere2 = new THREE.Object3D();
+
+   var sphereMesh1 = new GameObject(
+      new THREE.Vector3(30, 30, 0), new String("0xFFFFFF"), SPHERE, 10, true, false);
+   //this.scene.addToScene(this.sphere1.gShape);  
+
+   var sphereMesh2 = new GameObject(
+      new THREE.Vector3(-30, 30, 0), new String("0xFFFFFF"), SPHERE, 10, true, false);
+   //this.scene.addToScene(this.sphere2.gShape); 
+
+   this.sphere1.add(sphereMesh1);
+   this.sphere2.add(sphereMesh2);
+
+   this.origin.add(this.sphere1);
+   this.origin.add(this.sphere2);
 
    // Finally, let's position the camera in the correct spot
-   this.scene.adjustCamera(new THREE.Vector3(0, 10, 100)); // +z is backward
+   this.scene.moveCamera(new THREE.Vector3(0, 30, 300)); // +z is backward
 }
 
 Game.prototype.update = function()
@@ -54,13 +74,21 @@ Game.prototype.update = function()
    var target = this;
    this.$gameView.mousemove(function(event)
    {
+      // Grab the latest mouse coordinates on the screen
       target.lastX = event.pageX;
       target.lastY = event.pageY;
    });
-   //this.scene.adjustCamera(new THREE.Vector3(0, 0, 0));
+   //this.scene.moveCamera(new THREE.Vector3(0, 0, 0));
 };
 
 Game.prototype.render = function()
 {
    this.scene.renderScene();
 };
+
+/*
+Take a look at this 
+
+http://jsfiddle.net/hbt9c/61/
+
+*/

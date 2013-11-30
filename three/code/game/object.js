@@ -5,7 +5,6 @@
 
 function GameObject(startingPos, mColor, type, size, isDynamic, shadowsEnabled)
 {
-   // TODO - Only symmetrical objects are capable of being created for now
    // StartingPos needs to be a threejs vector3
    // MColor is a hex color code
    // Type indicates what type of object this is:
@@ -68,7 +67,7 @@ function GameObject(startingPos, mColor, type, size, isDynamic, shadowsEnabled)
    }
 }
 
-Object.prototype.adjustPosition = function(change)
+Object.prototype.move = function(change)
 {
    // Change variable MUST be a ThreeJS Vector3 or a float
    // If it's a float, assume that the object should be moved along the z axis
@@ -76,4 +75,12 @@ Object.prototype.adjustPosition = function(change)
       this.gShape.position.z += change;
    else
       this.gShape.position.add(change);
+}
+
+Object.prototype.rotateAround = function(axis)
+{
+   // Axis needs to be a ThreeJS Vector3
+   var angle = Math.PI / 2;
+   var matrix = new THREE.Matrix4().makeRotationAxis(axis, angle);
+   this.gShape.matrix.applyMatrix4( matrix );
 }
