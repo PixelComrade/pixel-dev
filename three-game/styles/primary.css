@@ -1,6 +1,8 @@
 
 /* Primary stylesheet for the game index page */
 
+body { font-family: "Moire", sans-serif;}
+
 .fullscreen {
    position: absolute;
    left: 0;
@@ -8,4 +10,40 @@
    width: 100%;
    height: 100%;
    /* Total full screen */
+}
+
+.sidemenu {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 15%;
+   height: 100%;
+
+   background-color: #fff;
+   border-right: 5px solid #ff0000;
+}
+
+.sidemenu .btn {
+   position: absolute;
+   margin-left:100%;
+   background-color: #ff0000;
+   padding: 5px 15px;
+   border-radius: 0 0 15px 0;
+   color: #fff;
+   font-weight: 700;
+   cursor: pointer;
+}
+
+.sidemenu .btn:hover {
+   background-color: #E80000;
+}
+
+.sidemenu .btn:active {
+   background-color: #FF1515;
+}
+
+.sideContent {
+   position: relative;
+   overflow: hidden;
+   margin: 5% 0;
 }
