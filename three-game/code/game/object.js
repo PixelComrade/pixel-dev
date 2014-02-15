@@ -3,7 +3,7 @@
  * To be used for (preferably) every game object in the game
  */
 
-function GameObject(startingPos, mColor, type, size, isDynamic, shadowsEnabled)
+function GameObject(startingPos, mColor, type, size, isDynamic, getShadows, giveShadows)
 {
    // TODO - Only symmetrical objects are capable of being created for now
    // StartingPos needs to be a threejs vector3
@@ -15,8 +15,10 @@ function GameObject(startingPos, mColor, type, size, isDynamic, shadowsEnabled)
       // 3 - Torus
    // Size is a threejs vector3 to indicate the mesh size
    // In the case of a spherical object, a float can be passed
-   // ShadowsEnabled is a bool to indicate whether this object interacts with shadows
+   // getShadows is a bool to indicate whether this object receives shadows from other objects
+   // giveShadows is a bool to indicate whether this object produces shadows on receivable objects
 
+   // TODO - This doesn't affect the current rendering of the object
    this.material = new THREE.MeshLambertMaterial(
    {
       color: mColor
@@ -55,11 +57,10 @@ function GameObject(startingPos, mColor, type, size, isDynamic, shadowsEnabled)
    }
 
    this.gShape.position = startingPos;
-   if(shadowsEnabled == true)
-   {
-      this.gShape.castShadow = true;
-      this.gShape.receiveShadow = true;
-   }
+
+   this.gShape.receiveShadow = getShadows;
+   this.gShape.castShadow = giveShadows;
+
    if(isDynamic == true)
    {
       this.gShape.geometry.dynamic = true;
