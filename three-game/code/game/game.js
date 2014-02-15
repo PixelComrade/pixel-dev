@@ -33,24 +33,24 @@ function Game(gameView)
 
    // The light first
    // A spotlight because we want shadows later on
-   this.spotlight = new THREE.SpotLight(0xff0000);
-   this.spotlight.position.set(50, 50, 0);
+   this.spotlight = new THREE.SpotLight(0xffffff);
+   this.spotlight.position.set(5, 5, 0);
    // The spotlight will focus on (0, 0, 0) by default
    this.scene.addToScene(this.spotlight);
 
    // Now the ground
    this.ground = new GameObject(
-      new THREE.Vector3(0, -5 , 0), new String("0xCC0000"), 
-      CUBE, new THREE.Vector3(200, 10, 200), false, false);
+      new THREE.Vector3(0, -5 , 0), new String("0xff0000"), 
+      CUBE, new THREE.Vector3(20, 1, 20), false, false);
    this.scene.addToScene(this.ground.gShape);
 
    // Now the blubber thing
    this.blubber = new GameObject(
-      new THREE.Vector3(0, 50, 0), new String("0xCC0000"), SPHERE, 10, true, false);
+      new THREE.Vector3(0, 5, 0), new String("0xff0000"), SPHERE, 1, false, false);
    this.scene.addToScene(this.blubber.gShape);  
 
    // Finally, let's position the camera in the correct spot
-   this.scene.moveCamera(new THREE.Vector3(0, 10, 100)); // +z is backward
+   this.scene.moveCamera(new THREE.Vector3(0, 1, 50)); // +z is backward
 }
 
 Game.prototype.update = function()
@@ -61,7 +61,7 @@ Game.prototype.update = function()
       target.lastX = event.pageX;
       target.lastY = event.pageY;
    });
-   //this.scene.adjustCamera(new THREE.Vector3(0, 0, 0));
+   //this.scene.moveCamera(new THREE.Vector3(0, 0, 15));
 };
 
 Game.prototype.render = function()

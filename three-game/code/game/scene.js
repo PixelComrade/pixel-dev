@@ -8,12 +8,12 @@ function Scene($gameView)
    // These don't need to be accessed again - for now
    var ASPECT = this.WIDTH / this.HEIGHT,
       NEAR = 0.1,
-      FAR = 10000; // An arbitrary number
+      FAR = 300; // An arbitrary number
 
    // Using a WebGL renderer rather than canvas rendering, some browsers won't support this
    this.renderer = new THREE.WebGLRenderer();
-   this.camera = new THREE.PerspectiveCamera(this.VIEW_ANGLE, ASPECT, NEAR, FAR);
    this.scene = new THREE.Scene();
+   this.camera = new THREE.PerspectiveCamera(this.VIEW_ANGLE, ASPECT, NEAR, FAR);
 
    this.scene.add(this.camera);
    this.renderer.setSize(this.WIDTH, this.HEIGHT);
