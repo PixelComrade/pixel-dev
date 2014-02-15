@@ -18,8 +18,8 @@ window.requestAnimFrame = (function()
       };
 })();
 
-var counter = 0;
-var limit = 30;
+var counter = 1;
+var limit = $('#frames').val();
 
 (function GameLoop()
 {
@@ -28,7 +28,7 @@ var limit = 30;
       requestAnimFrame(GameLoop);
       counter++;
    }
-   game.update(); // TODO - update at a locked framerate
-   game.render();
+   //game.update(); // TODO - update at a locked framerate
+   //game.render();
    console.log("Looping");
 })();

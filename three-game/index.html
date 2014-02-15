@@ -9,6 +9,7 @@
 
       <link rel="stylesheet" type="text/css" href="styles/primary.css" />
       
+      <!-- Plugins and 3rd party scripts -->
       <script type="text/javascript" src="code/jquery/jquery-1.10.1.min.js"></script>
       <script type="text/javascript" src="code/three/three.min.js"></script>
       
@@ -18,10 +19,15 @@
    
       <section id="gameView" class="fullscreen">
       </section>
+
       <aside class="sidemenu">
          <div class="btn">Toggle Menu</div>
          <br/>
          <article class="sideContent">
+            <div class="innerContent">
+               <label style="font-size: 11px;">How many frames to render:</label>
+               <input type="text" id="frames" value="30">
+            </div>
          </article>
       </aside>
       

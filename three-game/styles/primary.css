@@ -4,7 +4,7 @@
 body { font-family: "Moire", sans-serif;}
 
 .fullscreen {
-   position: absolute;
+   position: fixed;
    left: 0;
    top: 0;
    width: 100%;
@@ -44,6 +44,12 @@ body { font-family: "Moire", sans-serif;}
 
 .sideContent {
    position: relative;
-   overflow: hidden;
    margin: 5% 0;
+}
+
+.sideContent .innerContent {
+   max-width: 100%;
+   padding: 0 5% 0 5%;
+   overflow: hidden;
+   text-align: center;
 }
