@@ -26,15 +26,17 @@ $(function()
 
    function showMenu()
    {
-      $('.sidemenu').animate({
+      /*$('.sidemenu').animate({
          'margin-left': 0
-      }, 500);
+      }, 500);*/
+      $('.sidemenu').css('margin-left', '0px');
    }
 
    function hideMenu()
    {
-      $('.sidemenu').animate({
+      /*$('.sidemenu').animate({
          'margin-left': -width+'px'
-      }, 500);
+      }, 500);*/
+      $('.sidemenu').css('margin-left', -width+'px');
    }
 });
