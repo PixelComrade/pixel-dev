@@ -27,6 +27,12 @@ Scene.prototype.addToScene = function(item)
    this.scene.add(item);
 };
 
+Scene.prototype.removeFromScene = function(item)
+{
+   // TODO - Not tested
+   this.scene.remove(item);
+};
+
 Scene.prototype.moveCamera = function(change)
 {
    // Change variable MUST be a ThreeJS Vector3 or a float

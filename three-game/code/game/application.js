@@ -28,7 +28,7 @@ var limit = $('#frames').val();
       requestAnimFrame(GameLoop);
       counter++;
    }
-   //game.update(); // TODO - update at a locked framerate
-   //game.render();
+   game.update(); // TODO - update at a locked framerate
+   game.render();
    console.log("Looping");
 })();
